@@ -1,0 +1,54 @@
+---
+title: "a5"
+author: "Gheorghe Becciv"
+date: "September 30, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+# install necesary packages 
+install.packages("tidyr")
+install.packages("diplyr")
+install.packages("ggplot2")
+
+## Find your present Working directory
+#getwd() - (coomented for is a personal ID)
+
+#(2)
+
+## Read the Excel a5.csv file
+a5Table <- read.csv("a5.csv")
+
+#Change the table view to your console window size
+library(dplyr)
+tbl_df(a5Table)
+
+#View the entire table like in Excel
+View(a5Table)
+
+#Using the pipe operator (%>%)
+a5Table$Phoenix %>% 
+print()
+
+#removing empty row [3,]
+library(ggplot2)
+str(a5Table)
+nrow (a5Table)
+a5 <- a5Table [-c(3),]
+
+#change row's index
+row.names(a5) <- 1:nrow(a5)
+
